@@ -1,0 +1,15 @@
+import { Router } from "express";
+import { confirmPasswordReset, currentUser, googleLogin, googleProfile, googleSignInConfig, login, register, requestPasswordReset, verifyPasswordReset } from "../controllers/authController.js";
+import { authenticate } from "../middleware/auth.js";
+import { uploadRegistrationDocuments } from "../middleware/upload.js";
+const router = Router();
+router.post("/register", uploadRegistrationDocuments, register);
+router.post("/login", login);
+router.post("/forgot-password/request", requestPasswordReset);
+router.post("/forgot-password/verify", verifyPasswordReset);
+router.post("/forgot-password/confirm", confirmPasswordReset);
+router.get("/google/config", googleSignInConfig);
+router.post("/google/login", googleLogin);
+router.post("/google/profile", googleProfile);
+router.get("/me", authenticate, currentUser);
+export default router;

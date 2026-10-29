@@ -1,0 +1,15 @@
+{{> head}}
+<body class="bg-gray-50">
+  <div class="flex justify-center mt-10">
+    <form class="flex flex-col w-96 p-6 border rounded-lg shadow" method="POST" action="/register">
+      <h2 class="text-xl font-bold mb-4 text-center">Register</h2>
+      {{#if error_msg}}<p class="mb-3 rounded bg-red-50 p-2 text-sm text-red-700">{{error_msg}}</p>{{/if}}
+      <input type="text" name="name" placeholder="Name" class="mb-2 p-2 border rounded" required />
+      <input type="text" name="contactNumber" placeholder="Contact Number" class="mb-2 p-2 border rounded" />
+      <input type="email" name="email" placeholder="Email" class="mb-2 p-2 border rounded" required />
+      <input type="password" name="password" placeholder="Password (minimum 6 characters)" minlength="6" class="mb-2 p-2 border rounded" required />
+      <button type="submit" class="bg-green-500 text-white p-2 rounded">Register</button>
+      <a href="/login" class="text-blue-700 mt-2 text-center">Already have an account? Login</a>
+    </form>
+  </div>
+{{> footer }}
